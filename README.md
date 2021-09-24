@@ -10,7 +10,7 @@ Download the latest zip from the releases and follow the instructions below base
 
 #### Linux
 
-Unzip the app folder (leaving it as app/) and then place it in /usr/share/discord/resources
+Unzip the ColorDiscord folder and rename it to app then place it in /usr/share/discord/resources
 
 Folder structure should look like
 
@@ -21,7 +21,7 @@ Folder structure should look like
 
 #### Windows
 
-Unzip the app folder (leaving it as app/) and then place it in C:\Users\%username%\AppData\Local\Discord\resources
+Unzip the ColorDiscord folder and rename it to app then place it in C:\Users\%username%\AppData\Local\Discord\resources
 
 Folder structure should look like
 
