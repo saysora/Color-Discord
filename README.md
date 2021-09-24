@@ -29,10 +29,10 @@ Unzip the ColorDiscord folder and rename it to app then place it in C:\Users\%us
 
 Folder structure should look like
 
-`C:\Users\%username%\AppData\Local\Discord\resources\app\preload.js`
-`C:\Users\%username%\AppData\Local\Discord\resources\app\index.js`
-`C:\Users\%username%\AppData\Local\Discord\resources\app\ColorDiscord.js`
-`C:\Users\%username%\AppData\Local\Discord\resources\app\package.json`
+`C:\Users\%username%\AppData\Local\Discord\app-(number)\resources\app\preload.js`
+`C:\Users\%username%\AppData\Local\Discord\app-(number)\resources\app\index.js`
+`C:\Users\%username%\AppData\Local\Discord\app-(number)\resources\app\ColorDiscord.js`
+`C:\Users\%username%\AppData\Local\Discord\app-(number)\resources\app\package.json`
 
 #### Mac Instructions TBD
 
