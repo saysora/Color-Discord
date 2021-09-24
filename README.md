@@ -34,7 +34,9 @@ Folder structure should look like
 
 #### More Questions?
 
-I have a server on discord for a theme where you can ask about this one. [<img src="https://discordapp.com/api/guilds/809893441139507250/embed.png" />](https://discord.gg/dAqZ4abMnB)
+[<img src="https://discordapp.com/api/guilds/809893441139507250/embed.png" />](https://discord.gg/dAqZ4abMnB)
+
+I have a server on discord for a theme where you can ask about this one.
 
 ## Credits
 
