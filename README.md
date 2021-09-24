@@ -4,6 +4,10 @@
 
 A Custom plugin used to allow users to select their own color schemes for Discord
 
+## How to use
+
+After installing (see below), restart discord, then once it's loaded hit `ctrl + .` to pull up the editor window. The fields can handle rgb(), rgba(), and hex values.
+
 ## Installation
 
 Download the latest zip from the releases and follow the instructions below based upon your OS.
