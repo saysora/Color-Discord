@@ -2,6 +2,7 @@ class ColorDiscord {
   constructor() {
     console.log("Color Discord Activated");
 
+    /* Create our base for themevars - variables to inject into Discord's styles */
     this.themevars = {
       emojionlysize: "3rem",
       inlineemojisize: "2rem",
@@ -13,11 +14,15 @@ class ColorDiscord {
     };
 
     document.addEventListener("DOMContentLoaded", () => {
+      /* Connect to local storage so we can both set and get the custom themes whenever discord loads */
       let ls = window.localStorage;
       let theme = ls.getItem("theme");
 
+      /* This inject needs to happen after the preloader and in the main window */
       setTimeout(() => {
+        /* If we don't find the theme, we're going to set it up */
         if (!theme) {
+          /* Fancy reducer which takes the css variables from .theme-dark and puts them into an array */
           let cssvars = Array.from(document.styleSheets)
             .filter(
               (sheet) =>
@@ -45,6 +50,7 @@ class ColorDiscord {
               []
             );
 
+          /* We then loop through each of them and add them as properties to our themevars object */
           cssvars.forEach((item) => {
             var style = getComputedStyle(document.body);
             this.themevars[item.replace("--", "")] =
@@ -53,10 +59,11 @@ class ColorDiscord {
 
           ls.setItem("theme", JSON.stringify(this.themevars));
         } else {
+          /* Otherwise, if the theme exists, we set our themevars to the existing local storage of the theme */
           this.themevars = JSON.parse(ls.getItem("theme"));
         }
 
-        // Create Modal
+        // Create Modal with custom styling
 
         const stylezone = document.createElement("style");
         stylezone.innerHTML = `
@@ -255,6 +262,7 @@ class ColorDiscord {
 
         `;
 
+        /* Append our new style in prep for our modal to be used */
         document.querySelector("head").append(stylezone);
 
         // Create keybind for a modal to set your theme colors
@@ -270,12 +278,14 @@ class ColorDiscord {
           }
         });
 
+        /* We create our own style tag specifically just for all of the properties in themevars */
+
         let colorStyles = document.createElement("style");
 
         colorStyles.setAttribute("id", "colorstyles");
 
         colorStyles.innerHTML = ":root {";
-
+        /* And we loop through each property to place it in the style tag */
         Object.entries(this.themevars).forEach(([key, value]) => {
           colorStyles.innerHTML += `--${key}: ${value};`;
         });
@@ -287,6 +297,11 @@ class ColorDiscord {
     });
   }
 
+  /**
+   *
+   * @param {array} array We take in an array with two items, key and value to setup our fields for color changes
+   * @returns HTML template
+   */
   createColorItem([key, value]) {
     const newkey = key.replace("-", " ");
     return `
@@ -299,6 +314,10 @@ class ColorDiscord {
     `;
   }
 
+  /**
+   *
+   * @param {event} e Function used to update the style of the theme.
+   */
   setColorItem(e) {
     e.preventDefault();
     e.stopPropagation();
@@ -307,6 +326,8 @@ class ColorDiscord {
     this.themevars[newcolor.dataset.p] = newcolor.value;
     this.updateVars();
   }
+
+  /* Function to actually setup our theme modal for users to change their theme with as well as set our event listeners for opening and closing the theme gui */
 
   setupTheme() {
     let colorModal = document.createElement("div");
@@ -341,6 +362,7 @@ class ColorDiscord {
       }
     });
 
+    /* We want to allow the user to filter their view for the area they want to change so we create a simple filter */
     var filterinput = document.querySelector("#fieldfilter");
 
     filterinput.addEventListener("keyup", (e) => {
@@ -355,6 +377,7 @@ class ColorDiscord {
     });
   }
 
+  /* When the user updates their theme we want to update our local storage instance to allow persisting colors across reloads */
   updateVars() {
     let ls = window.localStorage;
     ls.setItem("theme", JSON.stringify(this.themevars));

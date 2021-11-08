@@ -8,6 +8,8 @@ const electronPath = require.resolve("electron");
 const discordPath = join(dirname(require.main.filename), "..", "app.asar");
 const discordPackage = require(join(discordPath, "package.json"));
 
+/* Extend Electron's Browser Window to inject custom code Thank you @powercord for this. */
+
 class ColorDiscordWindow extends BrowserWindow {
   constructor(opts) {
     let OGPreload;
@@ -17,6 +19,7 @@ class ColorDiscordWindow extends BrowserWindow {
       OGPreload = opts.webPreferences.preload;
 
       if (opts.webPreferences.nativeWindowOpen) {
+        /* Put in our custom preload to be used instead of discord's normal one */
         opts.webPreferences.preload = join(__dirname, "preload.js");
       }
     } else {
